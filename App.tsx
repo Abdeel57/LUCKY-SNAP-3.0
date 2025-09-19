@@ -1,3 +1,5 @@
+import supabase from supa base
+  const supabase create client (proces.env. https://mlfcjwqltrstanvrmyti.supabase.co, process.env.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1sZmNqd3FsdHJzdGFudnJteXRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgzMTQyNzQsImV4cCI6MjA3Mzg5MDI3NH0.RubsvKk4c_OgW-AciMdAoujYk4Qb1WgTxsO3LCFlC0U);
 import React, { lazy, Suspense } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
