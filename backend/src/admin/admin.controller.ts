@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Patch, Delete, Body, Param } from '@nestjs/common';
 import { AdminService } from './admin.service';
-// FIX: Using named imports for Prisma types to resolve module issues.
-import { OrderStatus, Raffle, Winner, Prisma } from '@prisma/client';
+// FIX: Using `import type` for types/namespaces and value import for the enum to fix module resolution.
+import { OrderStatus, type Raffle, type Winner, type Prisma } from '@prisma/client';
 
 @Controller('admin')
 export class AdminController {
@@ -36,7 +36,7 @@ export class AdminController {
   }
 
   @Post('raffles')
-  createRaffle(@Body() data: Omit<Raffle, 'id' | 'sold'>) {
+  createRaffle(@Body() data: Omit<Raffle, 'id' | 'sold' | 'createdAt' | 'updatedAt'>) {
     return this.adminService.createRaffle(data);
   }
 
@@ -62,7 +62,7 @@ export class AdminController {
   }
 
   @Post('winners')
-  saveWinner(@Body() data: Omit<Winner, 'id'>) {
+  saveWinner(@Body() data: Omit<Winner, 'id' | 'createdAt' | 'updatedAt'>) {
     return this.adminService.saveWinner(data);
   }
 

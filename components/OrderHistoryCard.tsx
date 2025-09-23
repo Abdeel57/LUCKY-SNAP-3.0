@@ -13,7 +13,8 @@ const getStatusInfo = (status: OrderStatus) => {
     }
 };
 
-const OrderHistoryCard = ({ order }: { order: Order }) => {
+// FIX: Explicitly type as React.FC to handle special props like 'key'.
+const OrderHistoryCard: React.FC<{ order: Order }> = ({ order }) => {
     const statusInfo = getStatusInfo(order.status);
     
     return (

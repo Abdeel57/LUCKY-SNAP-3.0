@@ -6,7 +6,8 @@ import { es } from 'date-fns/locale';
 import { motion } from 'framer-motion';
 import { Trophy } from 'lucide-react';
 
-const WinnerCard = ({ winner }: { winner: Winner }) => {
+// FIX: Explicitly type as React.FC to handle special props like 'key'.
+const WinnerCard: React.FC<{ winner: Winner }> = ({ winner }) => {
     return (
         <motion.div 
             className="bg-background-secondary rounded-lg overflow-hidden shadow-lg shadow-black/30 border border-slate-700/50 p-6 text-center"

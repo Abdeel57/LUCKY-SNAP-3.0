@@ -7,7 +7,8 @@ interface RaffleCardProps {
     raffle: Raffle;
 }
 
-const RaffleCard = ({ raffle }: RaffleCardProps) => {
+// FIX: Explicitly type as React.FC to handle special props like 'key'.
+const RaffleCard: React.FC<RaffleCardProps> = ({ raffle }) => {
     const progress = (raffle.sold / raffle.tickets) * 100;
 
     return (

@@ -1,12 +1,9 @@
-import React, { ReactNode } from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 
-interface ProtectedRouteProps {
-    children: ReactNode;
-}
-
-const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+// FIX: Used PropsWithChildren to correctly type the component that accepts children and removed the now-unused ProtectedRouteProps interface.
+const ProtectedRoute = ({ children }: PropsWithChildren) => {
     const { isAuthenticated } = useAuth();
     const location = useLocation();
 

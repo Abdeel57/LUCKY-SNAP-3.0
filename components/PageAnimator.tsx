@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react';
+import React, { PropsWithChildren } from 'react';
 import { motion } from 'framer-motion';
 
-const PageAnimator = ({ children }: { children: ReactNode }) => {
+// FIX: Used PropsWithChildren to correctly type the component that accepts children.
+const PageAnimator = ({ children }: PropsWithChildren) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

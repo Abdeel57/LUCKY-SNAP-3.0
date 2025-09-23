@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-// FIX: Using named imports for Prisma types to resolve module issues.
-import { Prisma, OrderStatus, Raffle, Winner } from '@prisma/client';
+// FIX: Using `import type` for types/namespaces and value import for the enum to fix module resolution.
+import { OrderStatus, type Prisma, type Raffle, type Winner } from '@prisma/client';
 
 @Injectable()
 export class AdminService {
@@ -73,8 +73,8 @@ export class AdminService {
     return this.prisma.raffle.findMany({ where: { status: 'finished' } });
   }
   
-  async createRaffle(data: Omit<Raffle, 'id' | 'sold'>) {
-    return this.prisma.raffle.create({ data: { ...data, sold: 0 } });
+  async createRaffle(data: Omit<Raffle, 'id' | 'sold' | 'createdAt' | 'updatedAt'>) {
+    return this.prisma.raffle.create({ data: { ...data, sold: 0 } as any });
   }
 
   async updateRaffle(id: string, data: Raffle) {
@@ -114,8 +114,8 @@ export class AdminService {
     return { ticket: winningTicket, order: winningOrder };
   }
 
-  async saveWinner(data: Omit<Winner, 'id'>) {
-    return this.prisma.winner.create({ data });
+  async saveWinner(data: Omit<Winner, 'id' | 'createdAt' | 'updatedAt'>) {
+    return this.prisma.winner.create({ data: data as any });
   }
 
   async deleteWinner(id: string) {
@@ -158,6 +158,7 @@ export class AdminService {
       },
       create: {
         ...mainSettings,
+        id: 'main_settings', // Ensure ID is set on creation
         paymentAccounts: {
           create: paymentAccounts.map(({ id, ...pa }) => pa),
         },

@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-// FIX: Using named imports for Prisma types to resolve module issues.
-import { Prisma, OrderStatus } from '@prisma/client';
+// FIX: Using `import type` for Prisma namespace and a value import for the OrderStatus enum.
+import { OrderStatus, type Prisma } from '@prisma/client';
 import { add } from 'date-fns';
 
 @Injectable()

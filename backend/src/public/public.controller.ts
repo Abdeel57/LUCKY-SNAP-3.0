@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Param, NotFoundException } from '@nestjs/common';
 import { PublicService } from './public.service';
-// FIX: Using named import for Prisma types to resolve module issues.
-import { Prisma } from '@prisma/client';
+// FIX: Using `import type` for the Prisma namespace to aid module resolution.
+import type { Prisma } from '@prisma/client';
 
 @Controller('public')
 export class PublicController {

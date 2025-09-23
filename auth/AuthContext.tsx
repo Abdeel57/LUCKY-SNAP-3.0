@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext, ReactNode, PropsWithChildren } from 'react';
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -11,7 +11,8 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 // Simple hardcoded password check for demo purposes
 const ADMIN_PASSWORD = 'password';
 
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
+// FIX: Used PropsWithChildren to correctly type the component that accepts children.
+export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
     try {
       return sessionStorage.getItem('isAdminAuthenticated') === 'true';

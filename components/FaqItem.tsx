@@ -9,7 +9,8 @@ interface FaqItemProps {
     onClick: () => void;
 }
 
-const FaqItem = ({ question, answer, isOpen, onClick }: FaqItemProps) => {
+// FIX: Explicitly type as React.FC to handle special props like 'key'.
+const FaqItem: React.FC<FaqItemProps> = ({ question, answer, isOpen, onClick }) => {
     return (
         <div className="bg-background-secondary rounded-lg border border-slate-700/50">
             <button

@@ -7,12 +7,10 @@ import {
   AdminUser,
 } from '../types';
 
-// --- IMPORTANT ---
-// This URL MUST be replaced with your actual deployed backend URL.
-// When you deploy your backend (e.g., on Render.com), you will get a public URL.
-// For local development, keep it as 'http://localhost:3001/api'.
-// For production, it will look something like: 'https://your-app-name.onrender.com/api'
-const API_URL = 'http://localhost:3001/api';
+// --- IMPORTANTE ---
+// Esta URL debe ser reemplazada por la URL pública de tu backend desplegado en Render.com.
+// Una vez que Render te dé una URL como 'https://tu-app.onrender.com', pégala aquí.
+const API_URL = 'https://your-backend-url.onrender.com/api';
 
 /**
  * A robust response handler for fetch requests.
